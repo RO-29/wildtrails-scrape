@@ -105,7 +105,7 @@ def extract_data_park_sanjay_gandhi(parkID, dateTime):
     soup = BeautifulSoup(res.text,'lxml')
     form = deepcopy(config.formData)
     form = formData(soup, form ,10)
-    config.formData[config.ctlUtilityRajiv] = dateTime
+    form[config.ctlUtilityRajiv] = dateTime
     res = session.post(config.BASE_URL_RAJIV, form, headers = headers, verify=False)
     soup = BeautifulSoup(res.text,'lxml')
     content = soup.find("div", {"id":"pnlResource"})
