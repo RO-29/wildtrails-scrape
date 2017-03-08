@@ -129,7 +129,7 @@ def process_data(parkID,dateTime):
     session = requests.session()
     res = session.get(config.BASE_URL,headers = config.headers, verify=False)
     session, res = make_post_request_with_form_data(session,config.formData, res, parkID, today)
-    if dateTime > today:
+    if datetime.datetime.strptime(dateTime, config.dateFormat) > datetime.datetime.strptime(today, config.dateFormat):
         session, res = make_post_request_with_form_data(session, config.formData, res, parkID, dateTime)
     soup = BeautifulSoup(res.text,'lxml')
     tableDiv = soup.find('div',{'id':'CPH_pnlFacility'})
