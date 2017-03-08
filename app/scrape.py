@@ -119,8 +119,8 @@ def make_post_request_with_form_data(session,formDataDefault, resOriginal, parkI
     form = deepcopy(formDataDefault)
     form = formData(soup, form)
     form[config.ctlUtility],form[config.ctltxtDate] = parkID ,dateTime
-    #headers = deepcopy(config.headers)
-    res = session.post(config.BASE_URL, form, headers = resOriginal.headers, verify=False)
+    headers = deepcopy(config.headers)
+    res = session.post(config.BASE_URL, form, headers = headers, verify=False)
     return session,res
 
 
